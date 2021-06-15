@@ -36,7 +36,7 @@ def age_cal():
     else:
         age = int("20" + en_ID.get()[:2])
     current_age = int(now.year) - int(age)
-    email_verify()
+    return current_age
 
 
 def sound():
@@ -57,7 +57,7 @@ def id_verify():
         try:
             valid = int(en_ID.get())
             en_ID["text"] = str(valid)
-            age_cal()
+            email_verify()
         except ValueError as val:
             sound()
             messagebox.showerror("Error", val)
@@ -110,6 +110,20 @@ def email_verify():
         except:
             sound()
             messagebox.showerror("Error", "invalid Email, please make sure to put in right email")
+
+
+def populate_dict():
+    user_age = age_cal()
+    user_name = en_Name.get()
+    user_surname = en_Surname.get()
+    user_email = en_Email.get()
+    user_id = en_ID.get()
+    user_area = en_Area.get()
+    user_street = en_Street_Name.get()
+    user_postal = en_Postal.get()
+    user = {"Name": user_name, "Surname": user_surname, "Email": user_email, "ID": user_id, "Area": user_area}
+    user["Street"] = user_street
+    user["Postal"] = user_postal
 
 
 # head start
