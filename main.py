@@ -6,6 +6,8 @@ from playsound import playsound
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import datetime
+import rsaidnumber
 
 Login = Tk()
 Login["bg"] = "yellow"
@@ -23,7 +25,17 @@ try:
     for key in data["response"]["fiats"].keys():
         currencies.append(key)
 except requests.ConnectionError:
-    pass
+    messagebox.showerror("Network Error", "No internet connection")
+    exit()
+
+
+def age_cal():
+    now = datetime.date.today()
+    if int(en_ID.get()[:2]) >= 21:
+        age = int("19" + en_ID.get()[:2])
+    else:
+        age = int("20" + en_ID.get()[:2])
+    current_age = int(now.year) - int(age)
 
 
 def sound():
@@ -43,12 +55,12 @@ def verify():
             valid_counter -= 1
             sound()
             messagebox.showerror("Error", "Enter your name")
-    if en_Surname.get() == "":
+    elif en_Surname.get() == "":
         if valid_counter == 9:
             valid_counter -= 1
             sound()
             messagebox.showerror("Error", "Enter your surname")
-    if en_Email.get() == "":
+    elif en_Email.get() == "":
         if valid_counter == 9:
             valid_counter -= 1
             sound()
@@ -67,6 +79,7 @@ def verify():
                 valid_counter -= 1
                 sound()
                 messagebox.showerror("Error", val)
+
     if en_Street_Name.get == "":
         if valid_counter == 9:
             valid_counter -= 1
@@ -104,10 +117,9 @@ def verify():
                 Login.destroy()
                 import Lotto_game
             except:
-                if valid_counter == 9:
-                    valid_counter -= 1
-                    sound()
-                    messagebox.showerror("Error", "invalid Email, please make sure to put in right email")
+                valid_counter -= 1
+                sound()
+                messagebox.showerror("Error", "invalid Email, please make sure to put in right email")
 
 
 # head start
