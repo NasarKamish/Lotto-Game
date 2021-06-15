@@ -105,8 +105,7 @@ def email_verify():
             s.login(sender_email_id, password)
             s.sendmail(sender_email_id, receiver_email_id, text)
             s.quit()
-            Login.destroy()
-            import Lotto_game
+            populate_dict()
         except:
             sound()
             messagebox.showerror("Error", "invalid Email, please make sure to put in right email")
@@ -121,11 +120,14 @@ def populate_dict():
     user_area = en_Area.get()
     user_street = en_Street_Name.get()
     user_postal = en_Postal.get()
+    user_player_id = player_id_create()
     user = {"Name": user_name, "Surname": user_surname, "Email": user_email, "ID": user_id, "Age": user_age}
     user["Area"] = user_area
     user["Street"] = user_street
     user["Postal"] = user_postal
-    user_player_id = player_id_create()
+    user["Player Id"] = user_player_id
+    Login.destroy()
+    import Lotto_game
 
 
 def player_id_create():
