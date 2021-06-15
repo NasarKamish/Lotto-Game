@@ -36,6 +36,7 @@ def age_cal():
     else:
         age = int("20" + en_ID.get()[:2])
     current_age = int(now.year) - int(age)
+    email_verify()
 
 
 def sound():
@@ -56,6 +57,7 @@ def id_verify():
         try:
             valid = int(en_ID.get())
             en_ID["text"] = str(valid)
+            age_cal()
         except ValueError as val:
             sound()
             messagebox.showerror("Error", val)
@@ -80,9 +82,11 @@ def space_verify():
     elif en_Postal.get() == "":
         sound()
         messagebox.showerror("Error", "Enter your Postal code")
+    else:
+        id_verify()
 
 
-def verify():
+def email_verify():
     if en_Email.get() != "":
         try:
             sender_email_id = 'jimmy.local.lotto.game@gmail.com'
@@ -193,7 +197,7 @@ en_ID.place(x=50, y=400, width=300)
 
 # Buttons start
 # Continue start
-btn_Continue = Button(Login, text="Continue", borderwidth=10, command=verify)
+btn_Continue = Button(Login, text="Continue", borderwidth=10, command=space_verify)
 btn_Continue["font"] = "Times", 15
 btn_Continue.place(x=400, y=370, width=130, height=60)
 # Continue end
