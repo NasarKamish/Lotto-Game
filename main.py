@@ -37,25 +37,25 @@ def ex():
 
 
 def verify():
-    valid_Counter = 9
+    valid_counter = 9
     if en_Name.get() == "":
-        if valid_Counter == 9:
-            valid_Counter -= 1
+        if valid_counter == 9:
+            valid_counter -= 1
             sound()
             messagebox.showerror("Error", "Enter your name")
     if en_Surname.get() == "":
-        if valid_Counter == 9:
-            valid_Counter -= 1
+        if valid_counter == 9:
+            valid_counter -= 1
             sound()
             messagebox.showerror("Error", "Enter your surname")
     if en_Email.get() == "":
-        if valid_Counter == 9:
-            valid_Counter -= 1
+        if valid_counter == 9:
+            valid_counter -= 1
             sound()
             messagebox.showerror("Error", "Enter a valid Email")
     if len(en_ID.get()) != 13:
-        if valid_Counter == 9:
-            valid_Counter -= 1
+        if valid_counter == 9:
+            valid_counter -= 1
             sound()
             messagebox.showerror("Error", "ID must be 13 characters")
     if len(en_ID.get()) == 13:
@@ -63,27 +63,27 @@ def verify():
             valid = int(en_ID.get())
             en_ID["text"] = str(valid)
         except ValueError as val:
-            if valid_Counter == 9:
-                valid_Counter -= 1
+            if valid_counter == 9:
+                valid_counter -= 1
                 sound()
                 messagebox.showerror("Error", val)
     if en_Street_Name.get == "":
-        if valid_Counter == 9:
-            valid_Counter -= 1
+        if valid_counter == 9:
+            valid_counter -= 1
             sound()
             messagebox.showerror("Error", "Enter your Street name")
     if en_Area.get() == "":
-        if valid_Counter == 9:
-            valid_Counter -= 1
+        if valid_counter == 9:
+            valid_counter -= 1
             sound()
             messagebox.showerror("Error", "Enter your Area name")
     if en_Postal.get() == "":
-        if valid_Counter == 9:
-            valid_Counter -= 1
+        if valid_counter == 9:
+            valid_counter -= 1
             sound()
             messagebox.showerror("Error", "Enter your Postal code")
     if en_Email.get() != "":
-        if valid_Counter == 9:
+        if valid_counter == 9:
             try:
                 sender_email_id = 'jimmy.local.lotto.game@gmail.com'
                 receiver_email_id = en_Email.get()
@@ -104,8 +104,8 @@ def verify():
                 Login.destroy()
                 import Lotto_game
             except:
-                if valid_Counter == 9:
-                    valid_Counter -= 1
+                if valid_counter == 9:
+                    valid_counter -= 1
                     sound()
                     messagebox.showerror("Error", "invalid Email, please make sure to put in right email")
 
