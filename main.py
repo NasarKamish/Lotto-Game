@@ -48,78 +48,64 @@ def ex():
         Login.destroy()
 
 
-def verify():
-    valid_counter = 9
-    if en_Name.get() == "":
-        if valid_counter == 9:
-            valid_counter -= 1
-            sound()
-            messagebox.showerror("Error", "Enter your name")
-    elif en_Surname.get() == "":
-        if valid_counter == 9:
-            valid_counter -= 1
-            sound()
-            messagebox.showerror("Error", "Enter your surname")
-    elif en_Email.get() == "":
-        if valid_counter == 9:
-            valid_counter -= 1
-            sound()
-            messagebox.showerror("Error", "Enter a valid Email")
+def id_verify():
     if len(en_ID.get()) != 13:
-        if valid_counter == 9:
-            valid_counter -= 1
-            sound()
-            messagebox.showerror("Error", "ID must be 13 characters")
+        sound()
+        messagebox.showerror("Error", "ID must be 13 characters")
     if len(en_ID.get()) == 13:
         try:
             valid = int(en_ID.get())
             en_ID["text"] = str(valid)
         except ValueError as val:
-            if valid_counter == 9:
-                valid_counter -= 1
-                sound()
-                messagebox.showerror("Error", val)
+            sound()
+            messagebox.showerror("Error", val)
 
-    if en_Street_Name.get == "":
-        if valid_counter == 9:
-            valid_counter -= 1
-            sound()
-            messagebox.showerror("Error", "Enter your Street name")
-    if en_Area.get() == "":
-        if valid_counter == 9:
-            valid_counter -= 1
-            sound()
-            messagebox.showerror("Error", "Enter your Area name")
-    if en_Postal.get() == "":
-        if valid_counter == 9:
-            valid_counter -= 1
-            sound()
-            messagebox.showerror("Error", "Enter your Postal code")
+
+def space_verify():
+    if en_Name.get() == "":
+        sound()
+        messagebox.showerror("Error", "Enter your name")
+    elif en_Surname.get() == "":
+        sound()
+        messagebox.showerror("Error", "Enter your surname")
+    elif en_Email.get() == "":
+        sound()
+        messagebox.showerror("Error", "Enter a valid Email")
+    elif en_Street_Name.get == "":
+        sound()
+        messagebox.showerror("Error", "Enter your Street name")
+    elif en_Area.get() == "":
+        sound()
+        messagebox.showerror("Error", "Enter your Area name")
+    elif en_Postal.get() == "":
+        sound()
+        messagebox.showerror("Error", "Enter your Postal code")
+
+
+def verify():
     if en_Email.get() != "":
-        if valid_counter == 9:
-            try:
-                sender_email_id = 'jimmy.local.lotto.game@gmail.com'
-                receiver_email_id = en_Email.get()
-                password = "SMS31314NOW"
-                subject = "Lotto"
-                msg = MIMEMultipart()
-                msg['From'] = sender_email_id
-                msg['To'] = receiver_email_id
-                msg['Subject'] = subject
-                body = "You are verified account"
-                msg.attach(MIMEText(body, 'plain'))
-                text = msg.as_string()
-                s = smtplib.SMTP('smtp.gmail.com', 587)
-                s.starttls()
-                s.login(sender_email_id, password)
-                s.sendmail(sender_email_id, receiver_email_id, text)
-                s.quit()
-                Login.destroy()
-                import Lotto_game
-            except:
-                valid_counter -= 1
-                sound()
-                messagebox.showerror("Error", "invalid Email, please make sure to put in right email")
+        try:
+            sender_email_id = 'jimmy.local.lotto.game@gmail.com'
+            receiver_email_id = en_Email.get()
+            password = "SMS31314NOW"
+            subject = "Lotto"
+            msg = MIMEMultipart()
+            msg['From'] = sender_email_id
+            msg['To'] = receiver_email_id
+            msg['Subject'] = subject
+            body = "You are verified account"
+            msg.attach(MIMEText(body, 'plain'))
+            text = msg.as_string()
+            s = smtplib.SMTP('smtp.gmail.com', 587)
+            s.starttls()
+            s.login(sender_email_id, password)
+            s.sendmail(sender_email_id, receiver_email_id, text)
+            s.quit()
+            Login.destroy()
+            import Lotto_game
+        except:
+            sound()
+            messagebox.showerror("Error", "invalid Email, please make sure to put in right email")
 
 
 # head start
