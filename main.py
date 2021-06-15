@@ -7,7 +7,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import datetime
-import rsaidnumber
+import random
 
 Login = Tk()
 Login["bg"] = "yellow"
@@ -121,9 +121,19 @@ def populate_dict():
     user_area = en_Area.get()
     user_street = en_Street_Name.get()
     user_postal = en_Postal.get()
-    user = {"Name": user_name, "Surname": user_surname, "Email": user_email, "ID": user_id, "Area": user_area}
+    user = {"Name": user_name, "Surname": user_surname, "Email": user_email, "ID": user_id, "Age": user_age}
+    user["Area"] = user_area
     user["Street"] = user_street
     user["Postal"] = user_postal
+    user_player_id = player_id_create()
+
+
+def player_id_create():
+    player_initials = en_Name.get()[:1] + en_Surname.get()[:1]
+    player_dob = en_ID.get()[:6]
+    player_unique_number = str(random.randint(-1, 10)) + str(random.randint(-1, 10)) + str(random.randint(-1, 10))
+    player_id = player_initials + player_dob + player_unique_number + en_ID.get()[-1]
+    return player_id
 
 
 # head start
