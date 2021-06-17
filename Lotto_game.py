@@ -104,6 +104,13 @@ def ex():
         Game.destroy()
 
 
+def claim():
+    msg = messagebox.askquestion("Confirm", "Are you sure?")
+    if msg == "yes":
+        Game.destroy()
+        import Bank
+
+
 # head start
 lbl_head = Label(Game, text="Lotto Game", bg="yellow")
 lbl_head["font"] = "Times", 20
@@ -211,6 +218,8 @@ btn_Play["font"] = "Times", 15
 btn_Play.place(x=50, y=300, width=300)
 
 btn_Claim = Button(Game, text="Claim Reward", bg="white", borderwidth=5)
+btn_Claim["command"] = claim
+btn_Claim["state"] = "disabled"
 btn_Claim["font"] = "Times", 15
 btn_Claim.place(x=400, y=300, width=300)
 
