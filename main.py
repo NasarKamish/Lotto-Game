@@ -15,6 +15,8 @@ Login = Tk()
 Login["bg"] = "yellow"
 Login.geometry("750x500")
 Login.title("Log-in")
+currencies = []
+current_age = 0
 try:
     url = "https://currencyscoop.p.rapidapi.com/currencies"
     headers = {
@@ -32,13 +34,18 @@ except requests.ConnectionError:
 
 
 def age_cal():
+    global current_age
     now = datetime.date.today()
     if int(en_ID.get()[:2]) >= 21:
         age = int("19" + en_ID.get()[:2])
     else:
         age = int("20" + en_ID.get()[:2])
     current_age = int(now.year) - int(age)
-    return current_age
+    if current_age >= 18:
+        email_verify()
+    else:
+        sound()
+        messagebox.showerror("Error", "You are too young to enter")
 
 
 def sound():
@@ -59,7 +66,7 @@ def id_verify():
         try:
             valid = int(en_ID.get())
             en_ID["text"] = str(valid)
-            email_verify()
+            age_cal()
         except ValueError as val:
             sound()
             messagebox.showerror("Error", val)
@@ -75,6 +82,9 @@ def space_verify():
     elif en_Email.get() == "":
         sound()
         messagebox.showerror("Error", "Enter a valid Email")
+    elif cmb_Currency.get() == "":
+        sound()
+        messagebox.showerror("Error", "Choose your currency")
     else:
         id_verify()
 
@@ -90,7 +100,7 @@ def email_verify():
             msg['From'] = sender_email_id
             msg['To'] = receiver_email_id
             msg['Subject'] = subject
-            body = "You are verified account"
+            body = "You are a verified account"
             msg.attach(MIMEText(body, 'plain'))
             text = msg.as_string()
             s = smtplib.SMTP('smtp.gmail.com', 587)
@@ -105,7 +115,7 @@ def email_verify():
 
 
 def populate_dict():
-    user_age = age_cal()
+    user_age = current_age
     user_name = en_Name.get()
     user_surname = en_Surname.get()
     user_email = en_Email.get()
@@ -113,6 +123,7 @@ def populate_dict():
     user_player_id = player_id_create()
     user = {"Name": user_name, "Surname": user_surname, "Email": user_email, "ID": user_id, "Age": user_age}
     user["Player Id"] = user_player_id
+    messagebox.showinfo("Welcome", "Lets play!")
     Login.destroy()
     import Lotto_game
 
@@ -171,6 +182,8 @@ lbl_Currency.place(x=400, y=170)
 
 cmb_Currency = Combobox(Login)
 cmb_Currency["font"] = "Times", 15
+cmb_Currency["state"] = "readonly"
+cmb_Currency["values"] = currencies
 cmb_Currency.place(x=400, y=200, width=300)
 # Currency end
 # Row 2 end
