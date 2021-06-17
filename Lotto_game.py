@@ -8,6 +8,35 @@ Game.title("Lotto game")
 Game.geometry("750x450")
 
 
+def play_again():
+    sb_Guess_1["state"] = "normal"
+    sb_Guess_2["state"] = "normal"
+    sb_Guess_3["state"] = "normal"
+    sb_Guess_4["state"] = "normal"
+    sb_Guess_5["state"] = "normal"
+    sb_Guess_6["state"] = "normal"
+
+    en_Lotto_1["state"] = "normal"
+    en_Lotto_1.delete(0, END)
+    en_Lotto_1["state"] = "readonly"
+
+    en_Lotto_1["state"] = "normal"
+    en_Lotto_1.delete(0, END)
+    en_Lotto_1["state"] = "readonly"
+
+    en_Lotto_1["state"] = "normal"
+    en_Lotto_1.delete(0, END)
+    en_Lotto_1["state"] = "readonly"
+
+    en_Lotto_1["state"] = "normal"
+    en_Lotto_1.delete(0, END)
+    en_Lotto_1["state"] = "readonly"
+
+    en_Lotto_1["state"] = "normal"
+    en_Lotto_1.delete(0, END)
+    en_Lotto_1["state"] = "readonly"
+
+
 def ex():
     message = messagebox.askquestion("Exit", "Are you sure")
     if message == "yes":
@@ -30,29 +59,29 @@ fm_Enter["font"] = "Times", 15
 fm_Enter.place(x=50, y=100, height=100, width=300)
 
 # Guesses start
-en_Guess_1 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
-en_Guess_1["font"] = "Times", 15
-en_Guess_1.place(x=10, y=10, width=75)
+sb_Guess_1 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
+sb_Guess_1["font"] = "Times", 15
+sb_Guess_1.place(x=10, y=10, width=75)
 
-en_Guess_2 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
-en_Guess_2["font"] = "Times", 15
-en_Guess_2.place(x=110, y=10, width=75)
+sb_Guess_2 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
+sb_Guess_2["font"] = "Times", 15
+sb_Guess_2.place(x=110, y=10, width=75)
 
-en_Guess_3 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
-en_Guess_3["font"] = "Times", 15
-en_Guess_3.place(x=210, y=10, width=75)
+sb_Guess_3 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
+sb_Guess_3["font"] = "Times", 15
+sb_Guess_3.place(x=210, y=10, width=75)
 
-en_Guess_4 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
-en_Guess_4["font"] = "Times", 15
-en_Guess_4.place(x=10, y=50, width=75)
+sb_Guess_4 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
+sb_Guess_4["font"] = "Times", 15
+sb_Guess_4.place(x=10, y=50, width=75)
 
-en_Guess_5 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
-en_Guess_5["font"] = "Times", 15
-en_Guess_5.place(x=110, y=50, width=75)
+sb_Guess_5 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
+sb_Guess_5["font"] = "Times", 15
+sb_Guess_5.place(x=110, y=50, width=75)
 
-en_Guess_6 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
-en_Guess_6["font"] = "Times", 15
-en_Guess_6.place(x=210, y=50, width=75)
+sb_Guess_6 = Spinbox(fm_Enter, bg="Yellow", from_=1, to=49)
+sb_Guess_6["font"] = "Times", 15
+sb_Guess_6.place(x=210, y=50, width=75)
 # Guesses end
 
 # Enter end
@@ -67,27 +96,33 @@ fm_Lotto["font"] = "Times", 15
 fm_Lotto.place(x=400, y=100, height=100, width=300)
 
 # Lotto spin boxes start
-en_Lotto_1 = Spinbox(fm_Lotto, bg="Yellow", from_=1, to=49)
+en_Lotto_1 = Entry(fm_Lotto, bg="Yellow")
+en_Lotto_1["state"] = "readonly"
 en_Lotto_1["font"] = "Times", 15
 en_Lotto_1.place(x=10, y=10, width=75)
 
-en_Lotto_2 = Spinbox(fm_Lotto, bg="Yellow", from_=1, to=49)
+en_Lotto_2 = Entry(fm_Lotto, bg="Yellow")
+en_Lotto_2["state"] = "readonly"
 en_Lotto_2["font"] = "Times", 15
 en_Lotto_2.place(x=110, y=10, width=75)
 
-en_Lotto_3 = Spinbox(fm_Lotto, bg="Yellow", from_=1, to=49)
+en_Lotto_3 = Entry(fm_Lotto, bg="Yellow")
+en_Lotto_3["state"] = "readonly"
 en_Lotto_3["font"] = "Times", 15
 en_Lotto_3.place(x=210, y=10, width=75)
 
-en_Lotto_4 = Spinbox(fm_Lotto, bg="Yellow", from_=1, to=49)
+en_Lotto_4 = Entry(fm_Lotto, bg="Yellow")
+en_Lotto_4["state"] = "readonly"
 en_Lotto_4["font"] = "Times", 15
 en_Lotto_4.place(x=10, y=50, width=75)
 
-en_Lotto_5 = Spinbox(fm_Lotto, bg="Yellow", from_=1, to=49)
+en_Lotto_5 = Entry(fm_Lotto, bg="Yellow")
+en_Lotto_5["state"] = "readonly"
 en_Lotto_5["font"] = "Times", 15
 en_Lotto_5.place(x=110, y=50, width=75)
 
-en_Lotto_6 = Spinbox(fm_Lotto, bg="Yellow", from_=1, to=49)
+en_Lotto_6 = Entry(fm_Lotto, bg="Yellow")
+en_Lotto_6["state"] = "readonly"
 en_Lotto_6["font"] = "Times", 15
 en_Lotto_6.place(x=210, y=50, width=75)
 # Lotto spin boxes end
