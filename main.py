@@ -1,4 +1,6 @@
 # Nasar Kamish cohort 8 Group 2
+from tkinter.ttk import Combobox
+
 import requests
 from tkinter import *
 from tkinter import messagebox
@@ -73,15 +75,6 @@ def space_verify():
     elif en_Email.get() == "":
         sound()
         messagebox.showerror("Error", "Enter a valid Email")
-    elif en_Street_Name.get == "":
-        sound()
-        messagebox.showerror("Error", "Enter your Street name")
-    elif en_Area.get() == "":
-        sound()
-        messagebox.showerror("Error", "Enter your Area name")
-    elif en_Postal.get() == "":
-        sound()
-        messagebox.showerror("Error", "Enter your Postal code")
     else:
         id_verify()
 
@@ -117,14 +110,8 @@ def populate_dict():
     user_surname = en_Surname.get()
     user_email = en_Email.get()
     user_id = en_ID.get()
-    user_area = en_Area.get()
-    user_street = en_Street_Name.get()
-    user_postal = en_Postal.get()
     user_player_id = player_id_create()
     user = {"Name": user_name, "Surname": user_surname, "Email": user_email, "ID": user_id, "Age": user_age}
-    user["Area"] = user_area
-    user["Street"] = user_street
-    user["Postal"] = user_postal
     user["Player Id"] = user_player_id
     Login.destroy()
     import Lotto_game
@@ -155,15 +142,15 @@ en_Name["font"] = "Times", 15
 en_Name.place(x=50, y=100, width=300)
 # Name end
 
-# Street start
-lbl_Street_Name = Label(Login, text="Street Name:", bg="yellow")
-lbl_Street_Name["font"] = "Times", 15
-lbl_Street_Name.place(x=400, y=70)
+# ID start
+lbl_ID = Label(Login, text="ID Number:", bg="yellow")
+lbl_ID["font"] = "Times", 15
+lbl_ID.place(x=400, y=70)
 
-en_Street_Name = Entry(Login)
-en_Street_Name["font"] = "Times", 15
-en_Street_Name.place(x=400, y=100, width=300)
-# Street end
+en_ID = Entry(Login)
+en_ID["font"] = "Times", 15
+en_ID.place(x=400, y=100, width=300)
+# ID end
 # Row 1 end
 
 # Row 2 start
@@ -177,15 +164,15 @@ en_Surname["font"] = "Times", 15
 en_Surname.place(x=50, y=200, width=300)
 # Surname end
 
-# Area start
-lbl_Area = Label(Login, text="Area Name:", bg="yellow")
-lbl_Area["font"] = "Times", 15
-lbl_Area.place(x=400, y=170)
+# Currency start
+lbl_Currency = Label(Login, text="Currency:", bg="yellow")
+lbl_Currency["font"] = "Times", 15
+lbl_Currency.place(x=400, y=170)
 
-en_Area = Entry(Login)
-en_Area["font"] = "Times", 15
-en_Area.place(x=400, y=200, width=300)
-# Area end
+cmb_Currency = Combobox(Login)
+cmb_Currency["font"] = "Times", 15
+cmb_Currency.place(x=400, y=200, width=300)
+# Currency end
 # Row 2 end
 
 # Row 3 start
@@ -199,41 +186,20 @@ en_Email["font"] = "Times", 15
 en_Email.place(x=50, y=300, width=300)
 # Email end
 
-# Postal start
-lbl_Postal = Label(Login, text="Postal Code:", bg="yellow")
-lbl_Postal["font"] = "Times", 15
-lbl_Postal.place(x=400, y=270)
-
-en_Postal = Entry(Login)
-en_Postal["font"] = "Times", 15
-en_Postal.place(x=400, y=300, width=300)
-# Postal end
-# Row 3 end
-
-# Row 4 start
-# ID start
-lbl_ID = Label(Login, text="ID Number:", bg="yellow")
-lbl_ID["font"] = "Times", 15
-lbl_ID.place(x=50, y=370)
-
-en_ID = Entry(Login)
-en_ID["font"] = "Times", 15
-en_ID.place(x=50, y=400, width=300)
-# ID end
-
 # Buttons start
 # Continue start
 btn_Continue = Button(Login, text="Continue", borderwidth=10, command=space_verify)
 btn_Continue["font"] = "Times", 15
-btn_Continue.place(x=400, y=370, width=130, height=60)
+btn_Continue.place(x=400, y=270, width=130, height=60)
 # Continue end
 
 # Exit start
 btn_Exit = Button(Login, text="Exit", borderwidth=10, command=ex)
 btn_Exit["font"] = "Times", 15
-btn_Exit.place(x=570, y=370, width=130, height=60)
+btn_Exit.place(x=570, y=270, width=130, height=60)
 # Exit end
 # Buttons end
-# Row 4 end
+# Row 3 end
+
 
 Login.mainloop()
