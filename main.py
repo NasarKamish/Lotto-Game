@@ -79,9 +79,6 @@ def space_verify():
     elif en_Surname.get() == "":
         sound()
         messagebox.showerror("Error", "Enter your surname")
-    elif en_Email.get() == "":
-        sound()
-        messagebox.showerror("Error", "Enter a valid Email")
     elif cmb_Currency.get() == "":
         sound()
         messagebox.showerror("Error", "Choose your currency")
@@ -90,7 +87,10 @@ def space_verify():
 
 
 def email_verify():
-    if en_Email.get() != "":
+    if en_Email.get() == "":
+        sound()
+        messagebox.showerror("Error", "Enter a valid Email")
+    elif en_Email.get() != "":
         try:
             sender_email_id = 'jimmy.local.lotto.game@gmail.com'
             receiver_email_id = en_Email.get()
