@@ -7,6 +7,7 @@ Game = Tk()
 Game["bg"] = "yellow"
 Game.title("Lotto game")
 Game.geometry("750x450")
+prices = [0.00, 0.00, 20.00, 100.50, 2384.00, 8584.00,10000000.00]
 
 
 def play_again():
@@ -41,15 +42,22 @@ def play_again():
     en_Lotto_6.delete(0, END)
     en_Lotto_6["state"] = "readonly"
 
-    btn_Play["state"] = "disable"
+    btn_Play["state"] = "disabled"
     btn_Generate["state"] = "normal"
-    btn_Claim["state"] = "disable"
+    btn_Claim["state"] = "disabled"
 
 
 def play():
-    # btn_Claim["state"] = "normal"
-    # btn_Generate["state"] = "disable"
-    # btn_Play["state"] = "normal"
+    btn_Claim["state"] = "normal"
+    btn_Generate["state"] = "disabled"
+    btn_Play["state"] = "normal"
+
+    sb_Guess_1["state"] = "readonly"
+    sb_Guess_2["state"] = "readonly"
+    sb_Guess_3["state"] = "readonly"
+    sb_Guess_4["state"] = "readonly"
+    sb_Guess_5["state"] = "readonly"
+    sb_Guess_6["state"] = "readonly"
 
     generate_list = list(range(1, 50))
     random.shuffle(generate_list)
@@ -57,10 +65,37 @@ def play():
     input_list = list((int(sb_Guess_1.get()), int(sb_Guess_2.get()), int(sb_Guess_3.get()), int(sb_Guess_4.get()), int(sb_Guess_5.get()), int(sb_Guess_6.get())))
     matched_list = list(set(generate_list).intersection(input_list))
     numbers_matched = len(matched_list)
-    print(matched_list)
-    print(numbers_matched)
-    print(input_list)
-    print(generate_list)
+
+    lbl_Output["text"] = "You have " + str(numbers_matched) + " matches, and won " + str(prices[numbers_matched])
+    lbl_Output["text"] = lbl_Output["text"] + " ZAR"
+
+    en_Lotto_1["state"] = "normal"
+    en_Lotto_2["state"] = "normal"
+    en_Lotto_3["state"] = "normal"
+    en_Lotto_4["state"] = "normal"
+    en_Lotto_5["state"] = "normal"
+    en_Lotto_6["state"] = "normal"
+
+    en_Lotto_1.delete(0, END)
+    en_Lotto_2.delete(0, END)
+    en_Lotto_3.delete(0, END)
+    en_Lotto_4.delete(0, END)
+    en_Lotto_5.delete(0, END)
+    en_Lotto_6.delete(0, END)
+
+    en_Lotto_1.insert(0, generate_list[0])
+    en_Lotto_2.insert(0, generate_list[1])
+    en_Lotto_3.insert(0, generate_list[2])
+    en_Lotto_4.insert(0, generate_list[3])
+    en_Lotto_5.insert(0, generate_list[4])
+    en_Lotto_6.insert(0, generate_list[5])
+
+    en_Lotto_1["state"] = "readonly"
+    en_Lotto_2["state"] = "readonly"
+    en_Lotto_3["state"] = "readonly"
+    en_Lotto_4["state"] = "readonly"
+    en_Lotto_5["state"] = "readonly"
+    en_Lotto_6["state"] = "readonly"
 
 
 def ex():
@@ -170,6 +205,8 @@ lbl_Output.place(x=50, y=270, width=650)
 
 # Bottom buttons start
 btn_Play = Button(Game, text="Play again", bg="white", borderwidth=5)
+btn_Play["command"] = play_again
+btn_Play["state"] = "disabled"
 btn_Play["font"] = "Times", 15
 btn_Play.place(x=50, y=300, width=300)
 
