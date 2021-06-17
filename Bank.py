@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter.ttk import Combobox
+from playsound import playsound
 
 Claim = Tk()
 Claim.title("Claim Reward")
@@ -9,10 +10,25 @@ Claim.geometry("750x360")
 Claim["bg"] = "yellow"
 
 
+def sound():
+    playsound("Computer Error sound effect.mp3")
+
+
 def ex():
     message = messagebox.askquestion("Exit", "Are you sure")
     if message == "yes":
         Claim.destroy()
+
+
+def space_validation():
+    if en_Holder.get() == "":
+        sound()
+        messagebox.showerror("Error", "Please enter the account holder")
+    elif en_Number.get() == "":
+        sound()
+        messagebox.showerror("Error", "Please enter the account number")
+    else:
+        pass
 
 
 # head start
