@@ -1,4 +1,5 @@
 # Nasar Kamish cohort 8 Group 2
+import random
 from tkinter import *
 from tkinter import messagebox
 
@@ -20,21 +21,46 @@ def play_again():
     en_Lotto_1.delete(0, END)
     en_Lotto_1["state"] = "readonly"
 
-    en_Lotto_1["state"] = "normal"
-    en_Lotto_1.delete(0, END)
-    en_Lotto_1["state"] = "readonly"
+    en_Lotto_2["state"] = "normal"
+    en_Lotto_2.delete(0, END)
+    en_Lotto_2["state"] = "readonly"
 
-    en_Lotto_1["state"] = "normal"
-    en_Lotto_1.delete(0, END)
-    en_Lotto_1["state"] = "readonly"
+    en_Lotto_3["state"] = "normal"
+    en_Lotto_3.delete(0, END)
+    en_Lotto_3["state"] = "readonly"
 
-    en_Lotto_1["state"] = "normal"
-    en_Lotto_1.delete(0, END)
-    en_Lotto_1["state"] = "readonly"
+    en_Lotto_4["state"] = "normal"
+    en_Lotto_4.delete(0, END)
+    en_Lotto_4["state"] = "readonly"
 
-    en_Lotto_1["state"] = "normal"
-    en_Lotto_1.delete(0, END)
-    en_Lotto_1["state"] = "readonly"
+    en_Lotto_5["state"] = "normal"
+    en_Lotto_5.delete(0, END)
+    en_Lotto_5["state"] = "readonly"
+
+    en_Lotto_6["state"] = "normal"
+    en_Lotto_6.delete(0, END)
+    en_Lotto_6["state"] = "readonly"
+
+    btn_Play["state"] = "disable"
+    btn_Generate["state"] = "normal"
+    btn_Claim["state"] = "disable"
+
+
+def play():
+    # btn_Claim["state"] = "normal"
+    # btn_Generate["state"] = "disable"
+    # btn_Play["state"] = "normal"
+
+    generate_list = list(range(1, 50))
+    random.shuffle(generate_list)
+    generate_list = generate_list[:6]
+    input_list = list((int(sb_Guess_1.get()), int(sb_Guess_2.get()), int(sb_Guess_3.get()), int(sb_Guess_4.get()), int(sb_Guess_5.get()), int(sb_Guess_6.get())))
+    matched_list = list(set(generate_list).intersection(input_list))
+    numbers_matched = len(matched_list)
+    print(matched_list)
+    print(numbers_matched)
+    print(input_list)
+    print(generate_list)
 
 
 def ex():
@@ -131,6 +157,7 @@ en_Lotto_6.place(x=210, y=50, width=75)
 
 # Generate btn start
 btn_Generate = Button(Game, text="Generate Lotto Number", bg="white", borderwidth=5)
+btn_Generate["command"] = play
 btn_Generate["font"] = "Times", 15
 btn_Generate.place(x=200, y=210, width=350)
 # Generate btn end

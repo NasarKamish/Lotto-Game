@@ -13,7 +13,7 @@ import random
 
 Login = Tk()
 Login["bg"] = "yellow"
-Login.geometry("750x500")
+Login.geometry("750x400")
 Login.title("Log-in")
 currencies = []
 current_age = 0
