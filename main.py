@@ -10,6 +10,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import datetime
 import random
+import rsaidnumber
 
 Login = Tk()
 Login["bg"] = "yellow"
@@ -59,17 +60,13 @@ def ex():
 
 
 def id_verify():
-    if len(en_ID.get()) != 13:
-        sound()
-        messagebox.showerror("Error", "ID must be 13 characters")
-    if len(en_ID.get()) == 13:
-        try:
-            valid = int(en_ID.get())
-            en_ID["text"] = str(valid)
+    try:
+        id_number = rsaidnumber.parse(en_ID.get())
+        if id_number.valid:
             age_cal()
-        except ValueError as val:
-            sound()
-            messagebox.showerror("Error", val)
+    except:
+        sound()
+        messagebox.showerror("awe", "awe")
 
 
 def space_verify():
