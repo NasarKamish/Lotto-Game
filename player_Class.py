@@ -2,15 +2,16 @@ import json
 
 
 class Player:
-    def __init__(self, name, surname, id, email, currency, prize):
+    def __init__(self, name, surname, age, id, email, currency, prize, player_ID):
         self.name = name
         self.surname = surname
+        self.age = age
         self.id = id
         self.email = email
         self.currency = currency
         self.prize = prize
-        self.dict = {"Name": name, "Surname": surname, "ID": id, "Email": email, "Currency": currency, "Prize": prize}
-        self.text_fill()
+        self.player_ID = player_ID
+        self.dict = {"Name": name, "Surname": surname, "Age": age, "ID": id, "Email": email, "Currency": currency, "Prize": prize, "Player ID": player_ID}
 
     def text_fill(self):
         with open("player.txt", "w") as player_file:
@@ -23,4 +24,4 @@ class Player:
             return player_details
 
 
-player = Player("Nasar", "Kamish", "012839", "nasarkamish@gmail.com", "ZAR", 0)
+# player = Player("Nasar", "Kamish", "012839", "nasarkamish@gmail.com", "ZAR", 0)

@@ -11,6 +11,7 @@ from email.mime.multipart import MIMEMultipart
 import datetime
 import random
 import rsaidnumber
+import player_Class
 
 Login = Tk()
 Login["bg"] = "yellow"
@@ -117,9 +118,10 @@ def populate_dict():
     user_surname = en_Surname.get()
     user_email = en_Email.get()
     user_id = en_ID.get()
+    user_Currency = cmb_Currency.get()
     user_player_id = player_id_create()
-    user = {"Name": user_name, "Surname": user_surname, "Email": user_email, "ID": user_id, "Age": user_age}
-    user["Player Id"] = user_player_id
+    user = player_Class.Player(user_name, user_surname, user_age, user_id, user_email, user_Currency, 0, user_player_id)
+    user.text_fill()
     messagebox.showinfo("Welcome", "Lets play!")
     Login.destroy()
     import Lotto_game
