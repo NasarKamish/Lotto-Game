@@ -7,10 +7,12 @@ Game = Tk()
 Game["bg"] = "yellow"
 Game.title("Lotto game")
 Game.geometry("750x450")
-prices = [0.00, 0.00, 20.00, 100.50, 2384.00, 8584.00,10000000.00]
+prices = [0.00, 0.00, 20.00, 100.50, 2384.00, 8584.00, 10000000.00]
 
 
 def play_again():
+    lbl_Output["text"] = ""
+
     sb_Guess_1["state"] = "normal"
     sb_Guess_2["state"] = "normal"
     sb_Guess_3["state"] = "normal"
@@ -205,7 +207,7 @@ btn_Generate.place(x=200, y=210, width=350)
 # Generate btn end
 
 # output start
-lbl_Output = Label(Game, text="You have 6 matches and you won R10,000", bg="Yellow")
+lbl_Output = Label(Game, text="", bg="Yellow")
 lbl_Output["font"] = "Times", 15
 lbl_Output.place(x=50, y=270, width=650)
 # output end
