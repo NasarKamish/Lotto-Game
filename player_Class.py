@@ -21,4 +21,4 @@ class Player:
             print(player_details)
 
 
-player = Player("Nasar1", "Kamish", "012839", "nasarkamish@gmail.com", "ZAR")
+# player = Player("Nasar1", "Kamish", "012839", "nasarkamish@gmail.com", "ZAR")
