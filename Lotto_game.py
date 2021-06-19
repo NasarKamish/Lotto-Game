@@ -21,7 +21,7 @@ def file_get():
         return player_details
 
 
-def text_fill():
+def file_fill():
     with open("player.txt", "w") as player_file:
         player_file.write(json.dumps(user))
 
@@ -137,6 +137,7 @@ def claim():
     if msg == "yes":
         global user
         user["Prize"] = float(user["Prize"]) + float(winnings)
+        file_fill()
         Game.destroy()
         import Bank
 

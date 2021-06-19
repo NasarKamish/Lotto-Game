@@ -3,11 +3,32 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter.ttk import Combobox
 from playsound import playsound
+import player_Class
+import json
 
 Claim = Tk()
 Claim.title("Claim Reward")
 Claim.geometry("750x360")
 Claim["bg"] = "yellow"
+
+
+def file_get():
+    with open("player.txt", "r") as player_file:
+        player_details = json.loads(player_file.read())
+        return player_details
+
+
+def file_fill():
+    with open("player.txt", "w") as player_file:
+        player_file.write(json.dumps(user))
+
+
+def class_create():
+    global user_dict
+    global user
+    user_dict = file_get()
+    user = player_Class.Player(user_dict["Name"], user_dict["Surname"], user_dict["Age"], user_dict["ID"], user_dict["Email"], user_dict["Currency"], user_dict["Prize"], user_dict["Player ID"])
+
 
 
 def sound():
