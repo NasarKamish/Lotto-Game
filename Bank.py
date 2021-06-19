@@ -5,11 +5,41 @@ from tkinter.ttk import Combobox
 from playsound import playsound
 import player_Class
 import json
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 Claim = Tk()
 Claim.title("Claim Reward")
 Claim.geometry("750x360")
 Claim["bg"] = "yellow"
+user_dict = {}
+user = {}
+
+
+def send_email():
+    try:
+        sender_email_id = 'jimmy.local.lotto.game@gmail.com'
+        receiver_email_id = user["Email"]
+        password = "SMS31314NOW"
+        subject = "Lotto"
+        msg = MIMEMultipart()
+        msg['From'] = sender_email_id
+        msg['To'] = receiver_email_id
+        msg['Subject'] = subject
+        body = "You are claiming 10 000 000 ZAR \n"
+        body = body + "The Account holder is Jeff \n"
+        body = body + "The Account number is 064826384926 \n"
+        msg.attach(MIMEText(body, 'plain'))
+        text = msg.as_string()
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        s.starttls()
+        s.login(sender_email_id, password)
+        s.sendmail(sender_email_id, receiver_email_id, text)
+        s.quit()
+    except:
+        sound()
+        messagebox.showerror("Error", "No internet connection")
 
 
 def file_get():
@@ -28,7 +58,6 @@ def class_create():
     global user
     user_dict = file_get()
     user = player_Class.Player(user_dict["Name"], user_dict["Surname"], user_dict["Age"], user_dict["ID"], user_dict["Email"], user_dict["Currency"], user_dict["Prize"], user_dict["Player ID"])
-
 
 
 def sound():
@@ -51,6 +80,8 @@ def space_validation():
     else:
         pass
 
+
+class_create()
 
 # head start
 lbl_head = Label(Claim, text="Bank Account", bg="yellow")

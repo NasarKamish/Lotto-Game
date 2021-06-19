@@ -92,7 +92,7 @@ def play():
     numbers_matched = len(matched_list)
 
     lbl_Output["text"] = "You have " + str(numbers_matched) + " matches, and won " + str(prices[numbers_matched])
-    lbl_Output["text"] = lbl_Output["text"] + " ZAR"
+    lbl_Output["text"] = lbl_Output["text"] + " " + str(user_dict["Currency"])
 
     global winnings
     winnings = float(winnings) + float(prices[numbers_matched])
