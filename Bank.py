@@ -44,12 +44,18 @@ def send_email():
 
 def file_get():
     with open("player.txt", "r") as player_file:
+        player_id = json.loads(player_file.read())
+
+    with open(str(player_id) + ".txt", "r") as player_file:
         player_details = json.loads(player_file.read())
         return player_details
 
 
 def file_fill():
-    with open("player.txt", "w") as player_file:
+    with open("player.txt", "r") as player_file:
+        player_id = json.loads(player_file.read())
+
+    with open(str(player_id) + ".txt", "w") as player_file:
         player_file.write(json.dumps(user))
 
 

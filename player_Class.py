@@ -12,6 +12,7 @@ class Player:
         self.prize = prize
         self.player_ID = player_ID
         self.dict = {"Name": name, "Surname": surname, "Age": age, "ID": id, "Email": email, "Currency": currency, "Prize": prize, "Player ID": player_ID}
+        self.player_id_store()
 
     def text_fill(self):
         with open(str(self.dict["Player ID"]) + ".txt", "w") as player_file:
