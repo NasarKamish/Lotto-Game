@@ -23,4 +23,5 @@ class Player:
             return player_details
 
 
-# player = Player("Nasar", "Kamish", "012839", "nasarkamish@gmail.com", "ZAR", 0)
+# player = Player("Nasar", "Kamish", 18, "012839", "nasarkamish@gmail.com", "ZAR", 0, "Nk2014")
+# player.text_fill()

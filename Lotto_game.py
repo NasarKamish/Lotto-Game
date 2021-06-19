@@ -11,6 +11,8 @@ Game.title("Lotto game")
 Game.geometry("750x450")
 prices = [0.00, 0.00, 20.00, 100.50, 2384.00, 8584.00, 10000000.00]
 winnings = 0
+user_dict = {}
+user = {}
 
 
 def file_get():
@@ -19,9 +21,16 @@ def file_get():
         return player_details
 
 
+def text_fill():
+    with open("player.txt", "w") as player_file:
+        player_file.write(json.dumps(user))
+
+
 def class_create():
-    # user = player_Class.Player()
-    pass
+    global user_dict
+    global user
+    user_dict = file_get()
+    user = player_Class.Player(user_dict["Name"], user_dict["Surname"], user_dict["Age"], user_dict["ID"], user_dict["Email"], user_dict["Currency"], user_dict["Prize"], user_dict["Player ID"])
 
 
 def play_again():
@@ -86,7 +95,7 @@ def play():
     lbl_Output["text"] = lbl_Output["text"] + " ZAR"
 
     global winnings
-    winnings = winnings + 1
+    winnings = float(winnings) + float(prices[numbers_matched])
 
     en_Lotto_1["state"] = "normal"
     en_Lotto_2["state"] = "normal"
@@ -126,6 +135,8 @@ def ex():
 def claim():
     msg = messagebox.askquestion("Confirm", "Are you sure?")
     if msg == "yes":
+        global user
+        user["Prize"] = float(user["Prize"]) + float(winnings)
         Game.destroy()
         import Bank
 
