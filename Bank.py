@@ -27,9 +27,9 @@ def send_email():
         msg['From'] = sender_email_id
         msg['To'] = receiver_email_id
         msg['Subject'] = subject
-        body = "You are claiming 10 000 000 ZAR \n"
-        body = body + "The Account holder is Jeff \n"
-        body = body + "The Account number is 064826384926 \n"
+        body = "You are claiming " + str(user_dict["Prize"]) + " " + str(user_dict["Currency"]) + "\n"
+        body = body + "The Account holder is " + en_Holder.get() + "\n"
+        body = body + "The Account number is " + en_Number.get() + "\n"
         msg.attach(MIMEText(body, 'plain'))
         text = msg.as_string()
         s = smtplib.SMTP('smtp.gmail.com', 587)
@@ -129,6 +129,7 @@ cmb_Bank.place(x=200, y=200, width=350)
 
 # Buttons start
 btn_Claim = Button(Claim, text="Claim Reward", borderwidth=5)
+btn_Claim["command"] = space_validation
 btn_Claim["font"] = "Times", 15
 btn_Claim.place(x=50, y=270, width=300)
 
