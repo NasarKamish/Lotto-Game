@@ -2,12 +2,26 @@
 import random
 from tkinter import *
 from tkinter import messagebox
+import player_Class
+import json
 
 Game = Tk()
 Game["bg"] = "yellow"
 Game.title("Lotto game")
 Game.geometry("750x450")
 prices = [0.00, 0.00, 20.00, 100.50, 2384.00, 8584.00, 10000000.00]
+winnings = 0
+
+
+def file_get():
+    with open("player.txt", "r") as player_file:
+        player_details = json.loads(player_file.read())
+        return player_details
+
+
+def class_create():
+    # user = player_Class.Player()
+    pass
 
 
 def play_again():
@@ -70,6 +84,9 @@ def play():
 
     lbl_Output["text"] = "You have " + str(numbers_matched) + " matches, and won " + str(prices[numbers_matched])
     lbl_Output["text"] = lbl_Output["text"] + " ZAR"
+
+    global winnings
+    winnings = winnings + 1
 
     en_Lotto_1["state"] = "normal"
     en_Lotto_2["state"] = "normal"

@@ -20,7 +20,6 @@ class Player:
     def text_get(self):
         with open("player.txt", "r") as player_file:
             player_details = json.loads(player_file.read())
-            print(dict(player_details))
             return player_details
 
 
