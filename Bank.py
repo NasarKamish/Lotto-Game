@@ -78,7 +78,7 @@ def space_validation():
         sound()
         messagebox.showerror("Error", "Please enter the account number")
     else:
-        pass
+        send_email()
 
 
 class_create()
