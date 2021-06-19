@@ -131,7 +131,8 @@ def player_id_create():
     player_initials = en_Name.get()[:1] + en_Surname.get()[:1]
     player_dob = en_ID.get()[:6]
     player_unique_number = str(random.randint(-1, 10)) + str(random.randint(-1, 10)) + str(random.randint(-1, 10))
-    player_id = player_initials + player_dob + player_unique_number + en_ID.get()[-1]
+    player_unique_number = player_unique_number + str(random.randint(-1, 10)) + str(random.randint(-1, 10))
+    player_id = player_initials + player_dob + player_unique_number
     return player_id
 
 
