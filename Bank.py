@@ -79,10 +79,13 @@ def ex():
 def space_validation():
     if en_Holder.get() == "":
         sound()
-        messagebox.showerror("Error", "Please enter the account holder")
+        messagebox.showerror("Error", "Please enter your account holder")
     elif en_Number.get() == "":
         sound()
-        messagebox.showerror("Error", "Please enter the account number")
+        messagebox.showerror("Error", "Please enter your account number")
+    elif cmb_Bank.get() == "":
+        sound()
+        messagebox.showerror("Error", "Please enter your bank")
     else:
         send_email()
 
