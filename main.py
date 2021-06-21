@@ -12,6 +12,7 @@ import datetime
 import random
 import rsaidnumber
 import player_Class
+import unittest
 
 Login = Tk()
 Login["bg"] = "yellow"
@@ -135,6 +136,21 @@ def player_id_create():
     player_unique_number = player_unique_number + str(random.randint(-1, 10)) + str(random.randint(-1, 10))
     player_id = player_initials + player_dob + player_unique_number
     return player_id
+
+
+class Input_Test(unittest.TestCase):
+    def test_name(self):
+        if en_Name.get() == "":
+            raise ValueError("You must enter your name")
+
+    def test_id(self):
+        if not len(en_ID.get()) == 13:
+            raise ValueError("Your ID must be 13 characters")
+
+    def test_age(self):
+        current_age = 20
+        if not current_age >= 18:
+            raise ValueError("You must be above 18")
 
 
 # head start
