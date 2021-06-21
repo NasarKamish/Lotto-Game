@@ -148,6 +148,7 @@ def claim():
         import Bank
 
 
+class_create()
 # head start
 lbl_head = Label(Game, text="Lotto Game", bg="yellow")
 lbl_head["font"] = "Times", 20
