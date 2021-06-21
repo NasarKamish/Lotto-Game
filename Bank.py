@@ -20,7 +20,7 @@ user = {}
 def send_email():
     try:
         sender_email_id = 'jimmy.local.lotto.game@gmail.com'
-        receiver_email_id = user["Email"]
+        receiver_email_id = user_dict["Email"]
         password = "SMS31314NOW"
         subject = "Lotto"
         msg = MIMEMultipart()
@@ -99,7 +99,7 @@ lbl_head.place(x=0, y=10, width=750)
 # head end
 
 # Holder start
-lbl_Holder = Label(Claim, text="Account Details:", bg="yellow")
+lbl_Holder = Label(Claim, text="Account Holder:", bg="yellow")
 lbl_Holder["font"] = "Times", 15
 lbl_Holder.place(x=50, y=70)
 
