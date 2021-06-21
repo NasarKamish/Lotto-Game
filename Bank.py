@@ -77,6 +77,18 @@ def ex():
         Claim.destroy()
 
 
+def account_number_validation():
+    if not len(en_Number.get()) > 8:
+        sound()
+        messagebox.showerror("Error", "Enter a valid account number (8+ characters)")
+    else:
+        try:
+            int(en_Number.get())
+            send_email()
+        except ValueError as Ve:
+            messagebox.showerror("Error", Ve)
+
+
 def space_validation():
     if en_Holder.get() == "":
         sound()
@@ -88,7 +100,7 @@ def space_validation():
         sound()
         messagebox.showerror("Error", "Please enter your bank")
     else:
-        send_email()
+        account_number_validation()
 
 
 class_create()
