@@ -37,9 +37,10 @@ def send_email():
         s.login(sender_email_id, password)
         s.sendmail(sender_email_id, receiver_email_id, text)
         s.quit()
+        messagebox.showinfo("Email", "Email has been sent")
     except:
         sound()
-        messagebox.showerror("Error", "No internet connection")
+        messagebox.showerror("Error", "There was an error")
 
 
 def file_get():
