@@ -29,7 +29,7 @@ def file_fill():
         player_id = json.loads(player_file.read())
 
     with open(str(player_id) + ".txt", "w") as player_file:
-        player_file.write(json.dumps(user))
+        player_file.write(json.dumps(str(user)))
 
 
 def class_create():
@@ -97,8 +97,7 @@ def play():
     matched_list = list(set(generate_list).intersection(input_list))
     numbers_matched = len(matched_list)
 
-    lbl_Output["text"] = "You have " + str(numbers_matched) + " matches, and won " + str(prices[numbers_matched])
-    lbl_Output["text"] = lbl_Output["text"] + " " + str(user_dict["Currency"])
+    lbl_Output["text"] = "You have " + str(numbers_matched) + " matches, and won " + str(prices[numbers_matched]) + " " + str(user_dict["Currency"])
 
     global winnings
     winnings = float(winnings) + float(prices[numbers_matched])
@@ -142,8 +141,10 @@ def claim():
     msg = messagebox.askquestion("Confirm", "Are you sure?")
     if msg == "yes":
         global user
-        user["Prize"] = float(user["Prize"]) + float(winnings)
-        file_fill()
+        global user_dict
+        user_dict["Prize"] = str(float(user_dict["Prize"]) + float(winnings))
+        user = player_Class.Player(user_dict["Name"], user_dict["Surname"], user_dict["Age"], user_dict["ID"], user_dict["Email"], user_dict["Currency"], user_dict["Prize"], user_dict["Player ID"])
+        user.text_fill()
         Game.destroy()
         import Bank
 

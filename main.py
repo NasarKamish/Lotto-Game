@@ -113,6 +113,7 @@ def email_verify():
 
 
 def populate_dict():
+    global current_age
     user_age = current_age
     user_name = en_Name.get()
     user_surname = en_Surname.get()
